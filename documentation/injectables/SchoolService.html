@@ -145,11 +145,19 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
+                                <a href="#findEmail" >findEmail</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#findOne" >findOne</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
                                 <a href="#remove" >remove</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#removeByEmail" >removeByEmail</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -333,6 +341,75 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="findEmail"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>findEmail</b></span>
+                        <a href="#findEmail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findEmail(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="83"
+                                    class="link-to-prism">src/school/school.service.ts:83</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>email</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="findOne"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
@@ -471,6 +548,75 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="removeByEmail"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>removeByEmail</b></span>
+                        <a href="#removeByEmail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeByEmail(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="98"
+                                    class="link-to-prism">src/school/school.service.ts:98</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>email</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="update"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
@@ -557,7 +703,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpException, HttpStatus, Injectable } from &#x27;@nestjs/common&#x27;;
 import { CreateSchoolDto } from &#x27;./dto/create-school.dto&#x27;;
 import { UpdateSchoolDto } from &#x27;./dto/update-school.dto&#x27;;
-import { PrismaService } from &#x27;src/prisma/prisma.service&#x27;;
+import { PrismaService } from &#x27;../prisma/prisma.service&#x27;;
 
 @Injectable()
 export class SchoolService {
@@ -624,6 +770,42 @@ export class SchoolService {
     const deleteSchool &#x3D; await this.prisma.schools.delete({
       where: {
         id
+      }
+    })
+    if (deleteSchool) {
+      return {
+        statusCode: 200,
+        message: &quot;Data deleted successfully !&quot;,
+        data: deleteSchool
+      }
+    }
+    throw new HttpException(&quot; Request Error &quot;, HttpStatus.BAD_REQUEST);
+  }
+
+  async findEmail(email: string) {
+    const dataSchool &#x3D; await this.prisma.schools.findFirst({
+      where: {
+        email: email
+      }
+    })
+    if (dataSchool) {
+      return {
+        statusCode: 200,
+        data: dataSchool
+      }
+    }
+    throw new HttpException(&quot; Request Error &quot;, HttpStatus.BAD_REQUEST);
+  }
+
+  async removeByEmail(email: string) {
+    try {
+      
+    } catch (error) {
+      return error.message
+    }
+    const deleteSchool &#x3D; await this.prisma.schools.delete({
+      where: {
+        email
       }
     })
     if (deleteSchool) {

@@ -307,13 +307,29 @@ import { AuthModule } from &#x27;./auth/auth.module&#x27;;
 import { ServeStaticModule } from &#x27;@nestjs/serve-static&#x27;;
 import { join } from &#x27;path&#x27;;
 import { SchoolModule } from &#x27;./school/school.module&#x27;;
+import { MailerModule } from &#x27;@nestjs-modules/mailer&#x27;
+import { HandlebarsAdapter } from &quot;@nestjs-modules/mailer/dist/adapters/handlebars.adapter&quot;;
+import { strict } from &#x27;assert&#x27;;
 
 @Module({
   imports: [LatihanModule, TaskModule, PrismaModule, AuthModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, &#x27;..&#x27;, &#x27;public&#x27;)
     }),
-    SchoolModule
+    SchoolModule,
+    MailerModule.forRoot({
+      transport: &#x27;smtp://localhost:25&#x27;,
+      defaults: {
+        from: &#x27;noreply@emailsaya.com&#x27;,
+      },
+      template: {
+        dir: process.cwd() + &#x27;/mail&#x27;,
+        adapter: new HandlebarsAdapter(),
+        options: {
+          strict: false
+        }
+      }
+    })
   ],
   controllers: [AppController],
   providers: [AppService],

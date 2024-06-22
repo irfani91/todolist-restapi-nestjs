@@ -13,6 +13,7 @@ To do list with Rest API with simple functional such as :
 - Prisma Migration
 - Simple Unit Testing
 - Compodoc
+- Swagger
 - Docker 
 
 ## Installation
@@ -45,5 +46,11 @@ $ npm run test:e2e
 
 # test coverage
 $ npm run test:cov
+
+# run smtp local
+$ docker run --rm -p 25:25 -p 8025:80 rnwood/smtp4dev
+
+# run compodoc
+npx @compodoc/compodoc -p tsconfig.json -s
 ```
 

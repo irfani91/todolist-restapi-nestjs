@@ -138,6 +138,10 @@
                                     <span class="modifier"></span>
                                 <a href="#getHello" >getHello</a>
                             </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#testRegisterSuccess" >testRegisterSuccess</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -201,6 +205,52 @@
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="testRegisterSuccess"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>testRegisterSuccess</b></span>
+                        <a href="#testRegisterSuccess"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>testRegisterSuccess()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;test-mail&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="14"
+                                    class="link-to-prism">src/app.controller.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>    </div>
 
 
@@ -210,11 +260,16 @@ import { AppService } from &#x27;./app.service&#x27;;
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService) { }
 
   @Get()
   getHello(): string {
     return this.appService.getHello();
+  }
+
+  @Get(&#x27;test-mail&#x27;)
+  testRegisterSuccess() {
+    return this.appService.registerSuccess()
   }
 }
 </code></pre>
